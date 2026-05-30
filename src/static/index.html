@@ -18,33 +18,35 @@
     </header>
 
     <main>
+      <div id="message" class="hidden"></div>
+
       <section id="capabilities-container">
         <h3>Available Capabilities</h3>
         <div id="capabilities-list">
-          <!-- Capabilities will be loaded here -->
           <p>Loading capabilities...</p>
         </div>
       </section>
+    </main>
 
-      <section id="register-container">
-        <h3>Register Your Expertise</h3>
+    <!-- Register modal -->
+    <div id="register-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-dialog">
+        <h3 class="modal-title">Register Expertise</h3>
+        <p id="modal-capability-name" class="modal-capability-label"></p>
         <form id="register-form">
+          <input type="hidden" id="selected-capability" />
           <div class="form-group">
             <label for="email">Consultant Email:</label>
             <input type="email" id="email" required placeholder="your-email@slalom.com" />
           </div>
-          <div class="form-group">
-            <label for="capability">Select Capability:</label>
-            <select id="capability" required>
-              <option value="">-- Select a capability --</option>
-              <!-- Capability options will be loaded here -->
-            </select>
+          <div class="modal-actions">
+            <button type="submit">Register</button>
+            <button type="button" id="modal-cancel">Cancel</button>
           </div>
-          <button type="submit">Register Expertise</button>
         </form>
-        <div id="message" class="hidden"></div>
-      </section>
-    </main>
+      </div>
+    </div>
 
     <footer>
       <div class="footer-content">
