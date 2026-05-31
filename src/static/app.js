@@ -140,7 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
         { method: "POST" }
       );
       const result = await response.json();
-      showMessage(result.message || result.detail, response.ok ? "success" : "error");
+      showMessage(
+        result.message || result.detail || (response.ok ? "Consultant registered." : "Unable to register consultant."),
+        response.ok ? "success" : "error"
+      );
       if (response.ok) {
         closeModal();
         fetchCapabilities();
