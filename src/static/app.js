@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  let modalTriggerElement;
 
   function showMessage(text, type) {
     messageDiv.textContent = text;
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openModal(capabilityName) {
+    modalTriggerElement = document.activeElement;
     selectedCapabilityInput.value = capabilityName;
     modalCapabilityName.textContent = capabilityName;
     document.getElementById("email").value = "";
@@ -39,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function closeModal() {
     modal.classList.add("hidden");
+    if (modalTriggerElement && typeof modalTriggerElement.focus === "function") {
+      modalTriggerElement.focus();
+    }
   }
 
   modalCancel.addEventListener("click", closeModal);
