@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 
-  function openModal(capabilityName) {
-    modalTriggerElement = document.activeElement;
+  function openModal(capabilityName, triggerElement = document.activeElement) {
+    modalTriggerElement = triggerElement;
     selectedCapabilityInput.value = capabilityName;
     modalCapabilityName.textContent = capabilityName;
     document.getElementById("email").value = "";
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       document.querySelectorAll(".register-btn").forEach((btn) => {
-        btn.addEventListener("click", () => openModal(btn.dataset.capability));
+        btn.addEventListener("click", () => openModal(btn.dataset.capability, btn));
       });
     } catch (error) {
       capabilitiesList.innerHTML = "<p>Failed to load capabilities. Please try again later.</p>";
