@@ -29,10 +29,10 @@
     </main>
 
     <!-- Register modal -->
-    <div id="register-modal" class="modal hidden">
-      <div class="modal-backdrop"></div>
+    <div id="register-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-describedby="modal-capability-name">
+      <div class="modal-backdrop" aria-hidden="true"></div>
       <div class="modal-dialog">
-        <h3 class="modal-title">Register Expertise</h3>
+        <h3 id="register-modal-title" class="modal-title">Register Expertise</h3>
         <p id="modal-capability-name" class="modal-capability-label"></p>
         <form id="register-form">
           <input type="hidden" id="selected-capability" />
