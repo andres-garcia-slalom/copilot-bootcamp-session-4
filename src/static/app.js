@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBackdrop = modal.querySelector(".modal-backdrop");
 
   let messageTimeoutId;
+  const escapeHtml = (value) =>
+    String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
 
   function showMessage(text, type) {
     messageDiv.textContent = text;
@@ -56,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ? `<ul class="consultants-list">
                 ${details.consultants.map((email) =>
                   `<li>
-                    <span class="consultant-email">${email}</span>
-                    <button class="delete-btn" data-capability="${name}" data-email="${email}" aria-label="Unregister ${email}">❌</button>
+                    <span class="consultant-email">${escapeHtml(email)}</span>
+                    <button class="delete-btn" data-capability="${name}" data-email="${escapeHtml(email)}" aria-label="Unregister ${escapeHtml(email)}">❌</button>
                   </li>`
                 ).join("")}
               </ul>`
