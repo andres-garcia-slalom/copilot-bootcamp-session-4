@@ -108,7 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
       showMessage(result.message || result.detail, response.ok ? "success" : "error");
       if (response.ok) fetchCapabilities();
-    } catch {
+    } catch (error) {
+      console.error("Error unregistering:", error);
       showMessage("Failed to unregister. Please try again.", "error");
     }
   }
