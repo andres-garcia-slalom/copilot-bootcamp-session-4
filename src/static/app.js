@@ -130,7 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         closeModal();
         fetchCapabilities();
       }
-    } catch {
+    } catch (error) {
+      console.error("Error registering:", error);
       showMessage("Failed to register. Please try again.", "error");
     }
   });
