@@ -8,11 +8,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalCancel = document.getElementById("modal-cancel");
   const modalBackdrop = modal.querySelector(".modal-backdrop");
 
+  let messageTimeoutId;
+
   function showMessage(text, type) {
     messageDiv.textContent = text;
     messageDiv.className = type;
     messageDiv.classList.remove("hidden");
-    setTimeout(() => messageDiv.classList.add("hidden"), 5000);
+
+    if (messageTimeoutId) clearTimeout(messageTimeoutId);
+    messageTimeoutId = setTimeout(() => {
+      messageDiv.classList.add("hidden");
+      messageTimeoutId = undefined;
+    }, 5000);
   }
 
   function openModal(capabilityName) {
