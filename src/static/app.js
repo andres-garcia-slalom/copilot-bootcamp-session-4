@@ -118,7 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
         { method: "DELETE" }
       );
       const result = await response.json();
-      showMessage(result.message || result.detail, response.ok ? "success" : "error");
+      showMessage(
+        result.message || result.detail || (response.ok ? "Consultant unregistered." : "Unable to unregister consultant."),
+        response.ok ? "success" : "error"
+      );
       if (response.ok) fetchCapabilities();
     } catch (error) {
       console.error("Error unregistering:", error);
